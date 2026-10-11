@@ -1,0 +1,21 @@
+efficientphys_pure.onnx
+=======================
+
+This is a converted copy of a pretrained model from the rPPG-Toolbox project:
+
+  Source code and weights: https://github.com/ubicomplab/rPPG-Toolbox
+  Checkpoint:              final_model_release/PURE_EfficientPhys.pth (EfficientPhys trained on the PURE dataset)
+  Model paper:             Liu, Hill, Jiang, Patel, McDuff. "EfficientPhys: Enabling Simple, Fast and Accurate
+                           Camera-Based Vitals Measurement", WACV 2023.
+  Toolbox paper:           Liu et al. "rPPG-Toolbox: Deep Remote PPG Toolbox", NeurIPS 2023 (Datasets and Benchmarks).
+  Training dataset:        PURE (Stricker, Muller, Gross, 2014)
+
+Modifications: the network was exported to ONNX (opset 17) for use in a web browser. Two operations were rewritten
+as mathematically identical equivalents so they could be exported (the temporal-shift module and torch.diff).
+The converted model matches the original PyTorch model to within 1e-6. See tools/export_model.py.
+
+Licence: the toolbox is distributed under the Responsible AI Source Code License v1.1. A complete copy is in
+LICENSE-rPPG-Toolbox.txt in this folder and must stay with this model. Section 3 of that licence restricts certain uses
+(for example surveillance, inferring health conditions for non-accessibility purposes, and diagnosing a medical
+condition without human oversight). Anyone who receives this model or the page that uses it is bound by those
+restrictions.
