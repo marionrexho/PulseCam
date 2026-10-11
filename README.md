@@ -43,6 +43,25 @@ Type the reading from a pulse oximeter or chest strap into **Validation → Refe
 
 `tools/export_model.py` shows how the PyTorch checkpoint was converted to ONNX. The converted model matches the original to within about 1e-6.
 
+## Project structure
+
+```
+index.html          page markup
+css/styles.css      styles
+js/main.js          entry point: loads models, starts the camera
+js/config.js        constants and external URLs
+js/dom.js           DOM handles and small helpers
+js/state.js         shared application state
+js/camera.js        camera selection and exposure lock
+js/capture.js       face detection, motion tracking, face crops
+js/neural.js        EfficientPhys model (ONNX Runtime Web)
+js/dsp.js           FFT, filters, spectrum, peak finding, HRV
+js/analysis.js      heart rate, signal quality, HRV, respiration
+js/ui.js            readouts, video overlay and plots
+model/              ONNX model and licences
+tools/              model conversion script
+```
+
 ## Credits and licence
 
 - Model and weights: rPPG-Toolbox, <https://github.com/ubicomplab/rPPG-Toolbox>, Responsible AI Source Code License v1.1 (copy in `model/LICENSE-rPPG-Toolbox.txt`). Section 3 restricts some uses, for example surveillance and diagnosing a medical condition without human oversight. Keep the licence with the model if you share it.
