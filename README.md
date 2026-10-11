@@ -31,7 +31,7 @@ Tips for phones: prop the phone up (do not hold it), face a bright steady light,
 
 ## Checking accuracy
 
-Type the reading from a pulse oximeter or chest strap into **Validation → Reference BPM**. The page shows the error and mean absolute error, and **Export CSV** saves every sample with the reference value. 
+Type the reading from a pulse oximeter or chest strap into **Validation → Reference BPM**. The page shows the error and mean absolute error.
 
 ## How it works
 

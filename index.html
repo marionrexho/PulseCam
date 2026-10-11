@@ -114,7 +114,6 @@ footer code{font:11px var(--mono)}
       <b>PulseCam</b><small>Contactless vital signs</small>
     </div>
     <div class="actions">
-      <button id="exportBtn">Export CSV</button>
       <button id="startBtn" class="primary">Start camera</button>
     </div>
   </div>
@@ -845,15 +844,6 @@ function drawHist() {
 
 // ===================== Controls =====================
 $("startBtn").onclick = start;
-$("exportBtn").onclick = () => {
-  const f = (v, d = 1) => v == null || !isFinite(v) ? "" : v.toFixed(d);
-  const rows = ["time_s,hr_bpm,ref_bpm,error_bpm,confidence,snr_db,usable_frames,rmssd_ms,sdnn_ms,resp_bpm",
-    ...history.map(r => [f(r.t), f(r.hr), f(r.ref), r.ref != null && r.hr != null ? f(r.hr - r.ref) : "", f(r.conf, 2), f(r.snr),
-                         f(r.keep, 2), f(r.rmssd), f(r.sdnn), f(r.resp)].join(","))];
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" }));
-  a.download = "pulsecam_session.csv"; a.click();
-};
 </script>
 </body>
 </html>
